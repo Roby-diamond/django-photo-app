@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for post in posts %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ post.title }}</h5>
+      <p class="card-text" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">{{ post.description }} </p>
+      <p>{{ post.uploaded }}</p>
+      <a href="{% url 'detail' post.id %}" class="btn btn-primary">Read Full Post</a>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}
+
+
+<!-- use if/else statement for picture. i.e. if theres a picture show that if not show title -->

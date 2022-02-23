@@ -3,14 +3,4 @@
 
 <h1>Home</h1>
 
-{% for photo in photo_set.all %}
-
-<img src="{{photo.url}}">
-
-{% empty %}
-
-<p>No photos uploaded</p>
-
-{% endfor %}
-
 {% endblock %}
