@@ -1,12 +1,43 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">{{ post.title }}</h5>
-      <p class="card-text"> {{ post.description }} </p>
-      <p>{{ post.uploaded }}</p>
+<div class="container">
+  <div class="card" style="width: 18rem;">
+    {% for photo in post.photo_set.all %}
+    <img class=""card-img-top src="{{photo.url}}">
+    {% empty %}
+    <img class=""card-img-top src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg" alt="Card image cap">
+    {% endfor %}
+  
+  <div class="card-body">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <p class="card-text"> {{ post.description }} </p>
+    <p>{{ post.uploaded }}</p>
+    <form
+      action="{% url 'add_photo' post.id %}"
+      enctype="multipart/form-data"
+      method="POST"
+      class="card-panel"
+    >
+      {% csrf_token %}
+      <input type="file" name="photo-file" />
+      <br /><br />
+      <input type="submit" class="btn" value="Upload Photo" />
+    </form>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Manage Post
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="{% url 'posts_update' post.id %}">Edit</a>
+        <a class="dropdown-item" href="{% url 'posts_delete' post.id %}">Delete</a>
+      </div>
+    </div>
     </div>
   </div>
+  </div>
+  </div>
+  </div>
+</div>
 
 {% endblock %}
