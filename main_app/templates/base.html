@@ -16,8 +16,14 @@
     <nav class="navbar navbar-expand navbar-light bg-light">
         <div class="nav navbar-nav">
             <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+            {% if user.is_authenticated %}
             <a class="nav-item nav-link" href="{% url 'index' %}">View Posts</a>
             <a class="nav-item nav-link" href="{% url 'posts_create' %}">Add a New Post</a>
+            <a class="nav-item nav-link" href="{% url 'logout' %}">Log Out</a>
+            {% else %}
+            <a class="nav-item nav-link" href="{% url 'login' %}">Log In</a>
+            <a class="nav-item nav-link" href="{% url 'signup' %}">Sign Up</a>
+            {% endif %}
         </div>
     </nav>
     {% block content%}
