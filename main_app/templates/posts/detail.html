@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="container">
-  <div class="card mx-auto" style="width: 20rem; ">
+  <div class="card" style="width: 20rem; ">
     {% for photo in post.photo_set.all %}
     <img class="card-img-top img-responsive" src="{{photo.url}}" style="height: 20%;">
     {% empty %}
