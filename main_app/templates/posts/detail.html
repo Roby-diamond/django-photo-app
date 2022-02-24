@@ -2,12 +2,12 @@
 {% block content %}
 
 <div class="container">
-  <div class="card" style="width: 20rem; ">
+  <div class="card mx-auto bg-dark bg-gradient border border-primary border-2 text-light" style="width:20rem;">
     {% for photo in post.photo_set.all %}
-    <img class="card-img-top img-responsive" src="{{photo.url}}" style="height: 20%;">
+    <img class="card-img-top img-responsive" src="{{photo.url}}">
     {% empty %}
     <img class="card-img-top" src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
-      alt="Card image cap" style="height: 40rem;">
+      alt="Card image cap">
     {% endfor %}
 
     <div class="card-body">
