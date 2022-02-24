@@ -1,3 +1,8 @@
 body {
     background-color: grey;
+    display: flex;
+}
+
+div {
+    display: flex;
 }
