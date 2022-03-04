@@ -7,6 +7,8 @@ A photo blog that lets users upload and manage their own photos
 * Django
 * Python
 * Bootstrap
+* AWS
+* Amazon S3
 
 ## Screenshots
 
