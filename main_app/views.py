@@ -7,6 +7,8 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from guest_user.decorators import allow_guest_user
+from guest_user.mixins import AllowGuestUserMixin
 import uuid
 import boto3
 
@@ -19,7 +21,8 @@ BUCKET = 'photodeck'
 def home(request):
     return render(request, 'home.html')
 
-@login_required
+
+@allow_guest_user
 def posts_index(request):
     posts = Post.objects.filter(user=request.user)
     return render(request, 'posts/index.html', {'posts': posts})
@@ -58,7 +61,8 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-class PostCreate(LoginRequiredMixin, CreateView):
+
+class PostCreate(AllowGuestUserMixin, CreateView):
     model = Post
     fields = ('title', 'description',)
     def form_valid(self, form):

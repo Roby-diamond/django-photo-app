@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'guest_user'
 ]
 
 MIDDLEWARE = [
@@ -100,6 +101,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+   "django.contrib.auth.backends.ModelBackend",
+   "guest_user.backends.GuestBackend",
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
